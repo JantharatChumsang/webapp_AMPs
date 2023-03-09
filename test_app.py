@@ -2,6 +2,7 @@
 from hydralit import HydraApp
 import hydralit_components as hc
 import apps
+from apps.extras.backmapping.models import Articles, Sections
 import streamlit as st
 from streamlit_option_menu import option_menu
 from streamlit_lottie import st_lottie
