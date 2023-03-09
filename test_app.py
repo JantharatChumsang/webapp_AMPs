@@ -27,7 +27,7 @@ if __name__ == '__main__':
             favicon=":pill:",
             hide_streamlit_markers=hide_st,
             #add a nice banner, this banner has been defined as 5 sections with spacing defined by the banner_spacing array below.
-            use_banner_images=["resources\pig0.png",None,{'header':"<h1 style='text-align:center;padding: 0px 0px;color:F36C23;font-size:150%;'>Web Application for Antimicrobial Peptide Prediction</h1><br><center>เว็บแอปพลิเคชันสำหรับการทำนายเพปไทด์ต้านจุลชีพ"},None,"./resources/lock.png"], 
+            use_banner_images=["resources/pig0.png",None,{'header':"<h1 style='text-align:center;padding: 0px 0px;color:F36C23;font-size:150%;'>Web Application for Antimicrobial Peptide Prediction</h1><br><center>เว็บแอปพลิเคชันสำหรับการทำนายเพปไทด์ต้านจุลชีพ"},None,"./resources/lock.png"], 
             banner_spacing=[8,30,60,30,4.5],
             navbar_theme=over_theme
         )
