@@ -68,16 +68,16 @@ class PredictApp(HydraHeadApp):
                 if cl002.button("🦠 Predict"):
                     try:
                         if (text_seq != '') and (data_file_uploader is not None):                                                
-                            canonical_amp = 'two input'
+                            Sequence = 'two input'
                         elif (text_seq != '') and (data_file_uploader is None):
-                            canonical_amp = text_seq
+                            Sequence = text_seq
                         elif (text_seq == '') and (data_file_uploader is not None):
-                            canonical_amp = data_file 
+                            Sequence = data_file 
                         elif (text_seq == '') and (data_file_uploader is None):
-                            canonical_amp = ''
-                        if canonical_amp == "" :
+                            Sequence = ''
+                        if Sequence == "" :
                             
-                            Ideal_er = '<div align="center"><p style="font-sans-serif:; color: white; font-size: 20px; background-color: #F75D59; border-radius: 5px;">**No peptides‼️</p>'
+                            Ideal_er = '<div align="center"><p style="font-sans-serif:; color: white; font-size: 20px; background-color: #F75D59; border-radius: 5px;">**Not find your peptide‼️ \n please in put your peptide</p>'
                             st.markdown(Ideal_er, unsafe_allow_html=True)
                             Ideal_forexa = '<div align="left"><p style="font-sans-serif:; color: black; font-size: 15px; background-color: white; border-radius: 5px;">For example, input your peptide FASTA format</p>'
                             st.markdown(Ideal_forexa, unsafe_allow_html=True)                                  
@@ -87,7 +87,7 @@ class PredictApp(HydraHeadApp):
                                                 <br><u>Sample2</u><br>>Sequence_name1<br>DFASCHTNGGICLPNRCPGHMIQIGICFRPRVKCCRSW<br>>Sequence_name2<br>FPFLLSLIPSAISALKKL </h1>
                                                 </div><br>"""
                             st.markdown(html_temp,unsafe_allow_html=True)
-                        elif canonical_amp == 'two input' :
+                        elif Sequence == 'two input' :
                             st.error('Please should a single channel be selected for the input of peptides between FASTA text format or FASTA file format.') 
                         else:
                             # model---------------------------------------------------------------------------
@@ -95,7 +95,7 @@ class PredictApp(HydraHeadApp):
                             model_angram_negative = joblib.load('model_RF_fulldata_gram-.pkl')
                             model_angram_post = joblib.load('model_RF_gramPos_resize_test.joblib')
                             # input data list ----------------------------------------------------------------  
-                            split_sequence = canonical_amp.split("\n")
+                            split_sequence = Sequence.split("\n")
                             list_clean_text = []
                             for i in range(len(split_sequence)):
                                 clean_text = " ".join([word for word in split_sequence[i].split()])
@@ -577,7 +577,7 @@ class PredictApp(HydraHeadApp):
                                             st.write('🔻 Hydrophilic: '+ (hydrophilic_list[i]), unsafe_allow_html=True)
                                         
                                         with cc4:
-                                            st.code('Similarity')
+                                            st.code('Similarity Compare')
                                             st.write('Defensin is: '+ str(list_sim_align[0])+"%")    
                                             st.write('Drosocin is: '+ str(list_sim_align[1])+"%")
                                             st.write('Spaetzle is: '+ str(list_sim_align[2])+"%")
@@ -656,72 +656,72 @@ class PredictApp(HydraHeadApp):
                                                     st.info('🔻 Score hydrophobic: '+ Score_hydrophobic_list[i])
                                                 # ("Similarity")
                                                 #     st.info('The similarity of your peptide compare %similarity with another peptide.')
-                                            # list_sim_align,  list_iden_align, list_gaps_align = align_sequences(canonical_amp) list_c_sim, list_matches, list_gaps_al, list_len_al
+                                            # list_sim_align,  list_iden_align, list_gaps_align = align_sequences(Sequence) list_c_sim, list_matches, list_gaps_al, list_len_al
                                                 with open('style2.css') as f:
                                                     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
                                                     ff01,ff02,ff03,ff04,ff05,ff06,ff07 = st.columns((1,4,0.5,4,0.5,4,1))
                                                     with ff02:
-                                                        Ideal_Feature = '<div align="center"><p style="font-family:; color:#1F3D7C; font-size: 18px; background-color: #C2DFFF;">Similarity</p>'
+                                                        Ideal_Feature = '<div align="center"><p style="font-family:; color:#1F3D7C; font-size: 18px; background-color: #C2DFFF;">Similarity Compare</p>'
                                                         st.markdown(Ideal_Feature, unsafe_allow_html=True)
                                                 
-                                                        st.write('Compare Defensin peptide is: ' + str(list_c_sim[0]) + '/' + str(list_len_al[0]) + '=' + str(list_sim_align[0])+ '%')    
-                                                        st.write('Compare Drosocin peptide is: ' + str(list_c_sim[1]) + '/' + str(list_len_al[1]) + '=' + str(list_sim_align[1])+ '%')
-                                                        st.write('Compare Spaetzle peptide is: ' + str(list_c_sim[2]) + '/' + str(list_len_al[2]) + '=' + str(list_sim_align[2])+ '%')
-                                                        st.write('Compare B-RAF peptide is: ' + str(list_c_sim[3]) + '/' + str(list_len_al[3]) + '=' + str(list_sim_align[3])+ '%')
-                                                        st.write('Compare Hemoglobin peptide is: '+ str(list_c_sim[4]) + '/' + str(list_len_al[4]) + '=' + str(list_sim_align[4])+ '%')
-                                                        st.write('Compare Keratin peptide is: '+ str(list_c_sim[5]) + '/' + str(list_len_al[5]) + '=' + str(list_sim_align[5])+ '%')
+                                                        st.write('Defensin peptide is: ' + str(list_c_sim[0]) + '/' + str(list_len_al[0]) + '=' + str(list_sim_align[0])+ '%')    
+                                                        st.write('Drosocin peptide is: ' + str(list_c_sim[1]) + '/' + str(list_len_al[1]) + '=' + str(list_sim_align[1])+ '%')
+                                                        st.write('Spaetzle peptide is: ' + str(list_c_sim[2]) + '/' + str(list_len_al[2]) + '=' + str(list_sim_align[2])+ '%')
+                                                        st.write('B-RAF peptide is: ' + str(list_c_sim[3]) + '/' + str(list_len_al[3]) + '=' + str(list_sim_align[3])+ '%')
+                                                        st.write('Hemoglobin peptide is: '+ str(list_c_sim[4]) + '/' + str(list_len_al[4]) + '=' + str(list_sim_align[4])+ '%')
+                                                        st.write('Keratin peptide is: '+ str(list_c_sim[5]) + '/' + str(list_len_al[5]) + '=' + str(list_sim_align[5])+ '%')
                                                 # with st.expander("Identity"):
                                                 #     st.info('The identity of your peptide compare identity with another peptide.')
-                                                # list_sim_align,  list_iden_align, list_gaps_align = align_sequences(canonical_amp) 
+                                                # list_sim_align,  list_iden_align, list_gaps_align = align_sequences(Sequence) 
                                                     with ff04:
-                                                        Ideal_Feature = '<div align="center"><p style="font-family:; color:#1F3D7C; font-size: 18px; background-color: #C2DFFF;">Identity</p>'
+                                                        Ideal_Feature = '<div align="center"><p style="font-family:; color:#1F3D7C; font-size: 18px; background-color: #C2DFFF;">Identity Compare</p>'
                                                         st.markdown(Ideal_Feature, unsafe_allow_html=True)
 
-                                                        st.write('Compare Defensin peptide is: ' + str(list_matches[0]) + '/' + str(list_len_al[0]) + '=' +  str(list_iden_align[0])+ '%')    
-                                                        st.write('Compare Drosocin peptide is: ' + str(list_matches[1]) + '/' + str(list_len_al[1]) + '=' +  str(list_iden_align[1])+ '%')
-                                                        st.write('Compare Spaetzle peptide is: ' + str(list_matches[2]) + '/' + str(list_len_al[2]) + '=' +  str(list_iden_align[2])+ '%')
-                                                        st.write('Compare B-RAF peptide is: ' + str(list_matches[3]) + '/' + str(list_len_al[3]) + '=' +  str(list_iden_align[3])+ '%')
-                                                        st.write('Compare Hemoglobin peptide is: ' + str(list_matches[4]) + '/' + str(list_len_al[4]) + '=' +  str(list_iden_align[4])+ '%')
-                                                        st.write('Compare Keratin peptide is: ' + str(list_matches[5]) + '/' + str(list_len_al[5]) + '=' +  str(list_iden_align[5])+ '%')
+                                                        st.write('Defensin peptide is: ' + str(list_matches[0]) + '/' + str(list_len_al[0]) + '=' +  str(list_iden_align[0])+ '%')    
+                                                        st.write('Drosocin peptide is: ' + str(list_matches[1]) + '/' + str(list_len_al[1]) + '=' +  str(list_iden_align[1])+ '%')
+                                                        st.write('Spaetzle peptide is: ' + str(list_matches[2]) + '/' + str(list_len_al[2]) + '=' +  str(list_iden_align[2])+ '%')
+                                                        st.write('B-RAF peptide is: ' + str(list_matches[3]) + '/' + str(list_len_al[3]) + '=' +  str(list_iden_align[3])+ '%')
+                                                        st.write('Hemoglobin peptide is: ' + str(list_matches[4]) + '/' + str(list_len_al[4]) + '=' +  str(list_iden_align[4])+ '%')
+                                                        st.write('Keratin peptide is: ' + str(list_matches[5]) + '/' + str(list_len_al[5]) + '=' +  str(list_iden_align[5])+ '%')
                                                         
                                                 # with st.expander("Gaps"):
                                                 #     st.info('The gaps of your peptide compare gaps with another peptide.')
-                                                # # list_sim_align,  list_iden_align, list_gaps_align = align_sequences(canonical_amp)
+                                                # # list_sim_align,  list_iden_align, list_gaps_align = align_sequences(Sequence)
                                                     with ff06:
-                                                        Ideal_Feature = '<div align="center"><p style="font-family:; color:#1F3D7C; font-size: 18px; background-color: #C2DFFF;">Gaps</p>'
+                                                        Ideal_Feature = '<div align="center"><p style="font-family:; color:#1F3D7C; font-size: 18px; background-color: #C2DFFF;">Gaps Compare</p>'
                                                         st.markdown(Ideal_Feature, unsafe_allow_html=True) 
 
-                                                        st.write('Compare Defensin peptide is: ' + str(list_gaps_al[0]) + '/' + str(list_len_al[0]) + '=' +  str(list_gaps_align[0])+ '%')    
-                                                        st.write('Compare Drosocin peptide is: ' + str(list_gaps_al[1]) + '/' + str(list_len_al[1]) + '=' +  str(list_gaps_align[1])+ '%')
-                                                        st.write('Compare Spaetzle peptide is: ' + str(list_gaps_al[2]) + '/' + str(list_len_al[2]) + '=' +  str(list_gaps_align[2])+ '%')
-                                                        st.write('Compare B-RAF peptide is: ' + str(list_gaps_al[3]) + '/' + str(list_len_al[3]) + '=' +  str(list_gaps_align[3])+ '%')
-                                                        st.write('Compare Hemoglobin peptide is: ' + str(list_gaps_al[4]) + '/' + str(list_len_al[4]) + '=' +  str(list_gaps_align[4])+ '%')
-                                                        st.write('Compare Keratin peptide is: ' + str(list_gaps_al[5]) + '/' + str(list_len_al[5]) + '=' +  str(list_gaps_align[5])+ '%')
+                                                        st.write('Defensin peptide is: ' + str(list_gaps_al[0]) + '/' + str(list_len_al[0]) + '=' +  str(list_gaps_align[0])+ '%')    
+                                                        st.write('Drosocin peptide is: ' + str(list_gaps_al[1]) + '/' + str(list_len_al[1]) + '=' +  str(list_gaps_align[1])+ '%')
+                                                        st.write('Spaetzle peptide is: ' + str(list_gaps_al[2]) + '/' + str(list_len_al[2]) + '=' +  str(list_gaps_align[2])+ '%')
+                                                        st.write('B-RAF peptide is: ' + str(list_gaps_al[3]) + '/' + str(list_len_al[3]) + '=' +  str(list_gaps_align[3])+ '%')
+                                                        st.write('Hemoglobin peptide is: ' + str(list_gaps_al[4]) + '/' + str(list_len_al[4]) + '=' +  str(list_gaps_align[4])+ '%')
+                                                        st.write('Keratin peptide is: ' + str(list_gaps_al[5]) + '/' + str(list_len_al[5]) + '=' +  str(list_gaps_align[5])+ '%')
 
                                                 # Graph show amino acid ---------------------------------------------------------------
                                                 c1,c2,c3 = st.columns((4,10,4))
                                                 with c2:
-                                                    num_R = canonical_amp.count('R')
-                                                    num_N = canonical_amp.count('N')
-                                                    num_D = canonical_amp.count('D')
-                                                    num_Q = canonical_amp.count('Q')
-                                                    num_E = canonical_amp.count('E')
-                                                    num_K = canonical_amp.count('K')
+                                                    num_R = df_user_name_seq['Sequence'][i].count('R')
+                                                    num_N = df_user_name_seq['Sequence'][i].count('N')
+                                                    num_D = df_user_name_seq['Sequence'][i].count('D')
+                                                    num_Q = df_user_name_seq['Sequence'][i].count('Q')
+                                                    num_E = df_user_name_seq['Sequence'][i].count('E')
+                                                    num_K = df_user_name_seq['Sequence'][i].count('K')
 
-                                                    num_H = canonical_amp.count('H')
-                                                    num_S = canonical_amp.count('S')
-                                                    num_T = canonical_amp.count('T')
-                                                    num_A = canonical_amp.count('A')
-                                                    num_C = canonical_amp.count('C')
-                                                    num_F = canonical_amp.count('F')
-                                                    num_G = canonical_amp.count('G')
-                                                    num_I = canonical_amp.count('I')
-                                                    num_L = canonical_amp.count('L')
-                                                    num_M = canonical_amp.count('M')
-                                                    num_P = canonical_amp.count('P')
-                                                    num_V = canonical_amp.count('V')
-                                                    num_W = canonical_amp.count('W')
-                                                    num_Y = canonical_amp.count('Y')
+                                                    num_H = df_user_name_seq['Sequence'][i].count('H')
+                                                    num_S = df_user_name_seq['Sequence'][i].count('S')
+                                                    num_T = df_user_name_seq['Sequence'][i].count('T')
+                                                    num_A = df_user_name_seq['Sequence'][i].count('A')
+                                                    num_C = df_user_name_seq['Sequence'][i].count('C')
+                                                    num_F = df_user_name_seq['Sequence'][i].count('F')
+                                                    num_G = df_user_name_seq['Sequence'][i].count('G')
+                                                    num_I = df_user_name_seq['Sequence'][i].count('I')
+                                                    num_L = df_user_name_seq['Sequence'][i].count('L')
+                                                    num_M = df_user_name_seq['Sequence'][i].count('M')
+                                                    num_P = df_user_name_seq['Sequence'][i].count('P')
+                                                    num_V = df_user_name_seq['Sequence'][i].count('V')
+                                                    num_W = df_user_name_seq['Sequence'][i].count('W')
+                                                    num_Y = df_user_name_seq['Sequence'][i].count('Y')
 
                                                     df = pd.DataFrame(
                                                     dict(
@@ -756,6 +756,7 @@ class PredictApp(HydraHeadApp):
                                                     
                                                 
                                                     st.pyplot(plt)
+                                                   
                                         st.write("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
                                                                                                 
                                     # show Dataframe of predict your peptide----------------------------------------------------------------------------------  
