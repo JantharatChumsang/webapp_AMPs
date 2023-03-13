@@ -61,24 +61,24 @@ class ContactUsAPP(HydraHeadApp):
                 self.do_redirect("https://www.kmutt.ac.th/")
             st.write("##")
 
-            t1,t2,t3,t4 = st.columns((0.2,0.8,1.5,1))
-            t1.image('resources/pig1.png', width = 40)
-            # t2.write("วิทยาลัยแพทยศาสตร์ศรีสวางควัฒน")
-            Ideal_d7 = '<div align="left"><p style="font-sans-serif:; color: black; font-size: 15px; background-color: white;">วิทยาลัยแพทยศาสตร์ศรีสวางควัฒน</p>'
-            t2.markdown(Ideal_d7, unsafe_allow_html=True)
-            # t2.write("ราชวิทยาลัยจุฬาภรณ์")
-            Ideal_d8 = '<div align="left"><p style="font-sans-serif:; color: black; font-size: 15px; background-color: white;">ราชวิทยาลัยจุฬาภรณ์</p>'
-            t2.markdown(Ideal_d8, unsafe_allow_html=True)
-            # t3.write("906 ถ.กำแพงเพชร 6 แขวงตลาดบางเขน เขตหลักสี่ กรุงเทพมหานคร 10210")
-            Ideal_d9 = '<div align="left"><p style="font-sans-serif:; color: black; font-size: 15px; background-color: white;">906 ถ.กำแพงเพชร 6 แขวงตลาดบางเขน เขตหลักสี่ กรุงเทพมหานคร 10210</p>'
-            t3.markdown(Ideal_d9, unsafe_allow_html=True)
-            # t4.write("สายด่วน รจภ. 1118, 0-2576-6718")
-            Ideal_d10 = '<div align="left"><p style="font-sans-serif:; color: black; font-size: 15px; background-color: white;">สายด่วน รจภ. 1118, 0-2576-6718</p>'
-            t4.markdown(Ideal_d10, unsafe_allow_html=True)
-            col_header_text2,col_header_logo_right,col_header_logo_right_far = st.columns([2,2,1])
-            if col_header_text2.button('This will open a CHULABHORN ROYAL ACADEMY Website'):
-                self.do_redirect("https://pscm.cra.ac.th/")
-            st.write("##")
+#             t1,t2,t3,t4 = st.columns((0.2,0.8,1.5,1))
+#             t1.image('resources/pig1.png', width = 40)
+#             # t2.write("วิทยาลัยแพทยศาสตร์ศรีสวางควัฒน")
+#             Ideal_d7 = '<div align="left"><p style="font-sans-serif:; color: black; font-size: 15px; background-color: white;">วิทยาลัยแพทยศาสตร์ศรีสวางควัฒน</p>'
+#             t2.markdown(Ideal_d7, unsafe_allow_html=True)
+#             # t2.write("ราชวิทยาลัยจุฬาภรณ์")
+#             Ideal_d8 = '<div align="left"><p style="font-sans-serif:; color: black; font-size: 15px; background-color: white;">ราชวิทยาลัยจุฬาภรณ์</p>'
+#             t2.markdown(Ideal_d8, unsafe_allow_html=True)
+#             # t3.write("906 ถ.กำแพงเพชร 6 แขวงตลาดบางเขน เขตหลักสี่ กรุงเทพมหานคร 10210")
+#             Ideal_d9 = '<div align="left"><p style="font-sans-serif:; color: black; font-size: 15px; background-color: white;">906 ถ.กำแพงเพชร 6 แขวงตลาดบางเขน เขตหลักสี่ กรุงเทพมหานคร 10210</p>'
+#             t3.markdown(Ideal_d9, unsafe_allow_html=True)
+#             # t4.write("สายด่วน รจภ. 1118, 0-2576-6718")
+#             Ideal_d10 = '<div align="left"><p style="font-sans-serif:; color: black; font-size: 15px; background-color: white;">สายด่วน รจภ. 1118, 0-2576-6718</p>'
+#             t4.markdown(Ideal_d10, unsafe_allow_html=True)
+#             col_header_text2,col_header_logo_right,col_header_logo_right_far = st.columns([2,2,1])
+#             if col_header_text2.button('This will open a CHULABHORN ROYAL ACADEMY Website'):
+#                 self.do_redirect("https://pscm.cra.ac.th/")
+#             st.write("##")
 
       
         except Exception as e:
