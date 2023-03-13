@@ -97,7 +97,7 @@ class IntroApp(HydraHeadApp):
             _,_,col_logo8,col_pic8,col_text8,col_btn8 = st.columns((1,0.5,2.55,1,8,2))
             col_pic8.write("##")
             col_pic8.image(os.path.join(".","resources","antimi.png"),width=75,)
-            col_text8.info("""Antimicrobial peptides, abbreviated as AMPs, are peptides that play vital role in defense mechanisms against invasion of pathogenic microorganisms in living organisms, including humans. These peptides are currently the topic of interest to develop into antimicrobial drugs.[[6]](Srinagarind Medical Journal (ejnal.com))""")
+            col_text8.info("""Antimicrobial peptides, abbreviated as AMPs, are peptides that play vital role in defense mechanisms against invasion of pathogenic microorganisms in living organisms, including humans. These peptides are currently the topic of interest to develop into antimicrobial drugs.[[6]](http://www.smj.ejnal.com/e-journal/showdetail/?show_preview=T&art_id=1941)""")
             st.write("##")
 
             _,_,col_logo7,col_pic7, col_text7,col_btn7 = st.columns((1,0.5,2.55,1,8,2))
@@ -131,7 +131,7 @@ class IntroApp(HydraHeadApp):
             [5] Institute for Quality and Efficiency in Health Care (IQWiG). (2019/08/29).What are microbes?
             link. https://www.ncbi.nlm.nih.gov/books/NBK279387/
             [6] Sakawrat Kanthawong. (2023). Antimicrobial Peptides: Alternative Therapy for Cancer Treatment?. 
-            link. Srinagarind Medical Journal (ejnal.com)
+            link. http://www.smj.ejnal.com/e-journal/showdetail/?show_preview=T&art_id=1941
             ``` """)
             st.write("##")
             st.write("##")
