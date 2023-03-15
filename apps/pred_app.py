@@ -414,30 +414,30 @@ class PredictApp(HydraHeadApp):
                                     if predictions_anti_or_non[i] == 1:
                                         anti_or_non.append('antimicrobial') 
                                         probs_anti_or_non_list.append((probs_anti_or_non)[1]) 
-                                        st.subheader('✔️ Your peptide is an antimicrobial peptide.')
-                                        st.text('Probability is '+ str((probs_anti_or_non)[1]))
+                                        # st.subheader('✔️ Your peptide is an antimicrobial peptide.')
+                                        # st.text('Probability is '+ str((probs_anti_or_non)[1]))
                                         if (predictions_pos[i] == 1) and (predictions_nec[i] == 1):
-                                            st.success(' 󠀠 󠀠✔️ 󠀠 Resist gram-positive ✚ bacteria.')
-                                            st.text('Probability is '+ str((probs_pos)[1]))
-                                            st.success(' 󠀠 󠀠✔️ 󠀠 Resist gram-negative ▬ bacteria.')
-                                            st.text('Probability is '+ str((probs_nec)[1]))
+                                            # st.success(' 󠀠 󠀠✔️ 󠀠 Resist gram-positive ✚ bacteria.')
+                                            # st.text('Probability is '+ str((probs_pos)[1]))
+                                            # st.success(' 󠀠 󠀠✔️ 󠀠 Resist gram-negative ▬ bacteria.')
+                                            # st.text('Probability is '+ str((probs_nec)[1]))
                                             pos_ro_nec.append('gram+,gram-')
                                             probs_nec_list.append((probs_nec)[1]) 
                                             probs_poe_list.append((probs_pos)[1])
                                         elif (predictions_pos[i] == 1) and (predictions_nec[i] == 0):
-                                            st.success(' 󠀠 󠀠✔️ 󠀠 Resist gram-positive ✚ bacteria.')
-                                            st.text('Probability is '+ str((probs_pos)[1]))
+                                            # st.success(' 󠀠 󠀠✔️ 󠀠 Resist gram-positive ✚ bacteria.')
+                                            # st.text('Probability is '+ str((probs_pos)[1]))
                                             pos_ro_nec.append('gram+') 
                                             probs_poe_list.append((probs_pos)[1])
                                             probs_nec_list.append('-')
                                         elif (predictions_pos[i] == 0) and (predictions_nec[i] == 1):
-                                            st.success(' 󠀠 󠀠✔️ 󠀠 Resist gram-negative ▬ bacteria.' )
-                                            st.text('Probability is '+ str((probs_nec)[1]))
+                                            # st.success(' 󠀠 󠀠✔️ 󠀠 Resist gram-negative ▬ bacteria.' )
+                                            # st.text('Probability is '+ str((probs_nec)[1]))
                                             pos_ro_nec.append('gram-')
                                             probs_poe_list.append('-')   
                                             probs_nec_list.append((probs_nec)[1])   
                                         else:
-                                            st.success(' 󠀠 󠀠✔️ 󠀠 Resist other gram of bacteria.')
+                                            # st.success(' 󠀠 󠀠✔️ 󠀠 Resist other gram of bacteria.')
                                             pos_ro_nec.append('other gram')
                                             probs_nec_list.append((probs_nec)[1]) 
                                             probs_poe_list.append((probs_pos)[1])
@@ -449,8 +449,8 @@ class PredictApp(HydraHeadApp):
                                         probs_anti_or_non_list.append(((probs_anti_or_non)[0]))
                                         probs_nec_list.append('-') 
                                         probs_poe_list.append('-')
-                                        st.subheader('❌ Your peptide is non antimicrobial peptide.')
-                                        st.text('Probability is '+ str((probs_anti_or_non)[0]))
+                                        # st.subheader('❌ Your peptide is non antimicrobial peptide.')
+                                        # st.text('Probability is '+ str((probs_anti_or_non)[0]))
                                                                         
                                 return anti_or_non, pos_ro_nec, probs_anti_or_non_list, probs_nec_list, probs_poe_list
         
@@ -552,11 +552,38 @@ class PredictApp(HydraHeadApp):
                                             
                                         with cc2: 
                                             # st.write("##")
-                                            st.markdown(html_temp.format('white','2px', '60%','#1F3D7C','#FFFFFF'),unsafe_allow_html=True)
+                                            # st.markdown(html_temp.format('white','2px', '60%','#1F3D7C','#FFFFFF'),unsafe_allow_html=True)
 
                                             anti_or_non, pos_ro_nec, probs_anti_or_non_list, probs_nec_list, probs_poe_list = use_model(df_ant_non_normed.iloc[[i]], df_pos_nec_normed.iloc[[i]])
                                             
-                                            st.markdown(html_temp.format('white','1px', '60%','#1F3D7C','#FFFFFF'),unsafe_allow_html=True)   
+                                            if anti_or_non[i] == 'antimicrobial':
+                                                st.code('✔️ 󠀠'+ anti_or_non[i])
+                                                st.write('Probability is:'+ " 󠀠 󠀠 󠀠 "+ str(probs_anti_or_non_list[i]))
+                                                st.code('Active against')
+                                                if pos_ro_nec[i] == 'gram+,gram-':
+                                                    st.write("gram+"+ " 󠀠 󠀠 󠀠 󠀠 󠀠 󠀠"+'Probability is:'+ " 󠀠 󠀠 󠀠 "+str(probs_poe_list[i]))
+                                                    st.write("gram-"+ " 󠀠 󠀠 󠀠 󠀠 󠀠 󠀠 󠀠"+'Probability is:'+ " 󠀠 󠀠 󠀠 "+str(probs_nec_list[i]))
+                                                elif pos_ro_nec[i] == 'gram+':
+                                                    st.write("gram+"+ " 󠀠 󠀠 󠀠 󠀠 󠀠 󠀠"+'Probability is:'+ " 󠀠 󠀠 󠀠 "+str(probs_poe_list[i]))
+                                                elif pos_ro_nec[i] == 'gram-':
+                                                    st.write("gram-"+ " 󠀠 󠀠 󠀠 󠀠 󠀠 󠀠 󠀠"+'Probability is:'+ " 󠀠 󠀠 󠀠 "+str(probs_nec_list[i]))
+                                            elif anti_or_non[i] == 'non antimicrobial':
+                                                st.code('❌ 󠀠'+ anti_or_non[i])
+                                                st.write('Probability is:'+ " 󠀠 󠀠 󠀠 "+ str(probs_anti_or_non_list[i])) 
+                                            
+                                          
+                                            # if pos_ro_nec[i] == 'gram+,gram-':
+                                            #     st.write("gram+"+ " 󠀠 󠀠 󠀠 󠀠 󠀠 󠀠"+'Probability is:'+ " 󠀠 󠀠 󠀠 "+str(probs_poe_list[i]))
+                                            #     st.write("gram-"+ " 󠀠 󠀠 󠀠 󠀠 󠀠 󠀠"+'Probability is:'+ " 󠀠 󠀠 󠀠 "+str(probs_nec_list[i]))
+                                            # elif pos_ro_nec[i] == 'gram+':
+                                            #     st.write("gram+"+ " 󠀠 󠀠 󠀠 󠀠 󠀠 󠀠"+'Probability is:'+ " 󠀠 󠀠 󠀠 "+str(probs_poe_list[i]))
+                                            # elif pos_ro_nec[i] == 'gram-':
+                                            #     st.write("gram-"+ " 󠀠 󠀠 󠀠 󠀠 󠀠 󠀠"+'Probability is:'+ " 󠀠 󠀠 󠀠 "+str(probs_nec_list[i]))
+                                            
+                                            
+                                            # st.write(probs_nec_list[i])
+                                            # st.write(probs_poe_list[i])
+                                            # st.markdown(html_temp.format('white','1px', '60%','#1F3D7C','#FFFFFF'),unsafe_allow_html=True)   
                                     
                                         # display result --------------------------------------------------------------------------
                                         # with st.container():
@@ -605,29 +632,43 @@ class PredictApp(HydraHeadApp):
                                                 with cooll2:
                                                     st.write('👉🏻 Name: '+ df_user_name_seq['name'][i])
                                                     st.write('👉🏻 Sequence: '+ df_user_name_seq['Sequence'][i])
-                                                    if anti_or_non[i] == "antimicrobial":
-                                                        st.subheader('✔️ Your peptide is an antimicrobial peptide.')
-                                                        st.text('Probability is '+ str((probs_anti_or_non_list)[i]))
-                                                        if (pos_ro_nec[i] == "gram+,gram-"):
-                                                            st.success(' 󠀠 󠀠✔️ 󠀠 Resist gram-positive ✚ bacteria.')
-                                                            st.text('Probability is '+ str((probs_poe_list)[i]))
-                                                            st.success(' 󠀠 󠀠✔️ 󠀠 Resist gram-negative ▬ bacteria.')
-                                                            st.text('Probability is '+ str((probs_nec_list)[i]))
+                                                    if anti_or_non[i] == 'antimicrobial':
+                                                        st.code('✔️ 󠀠'+ anti_or_non[i])
+                                                        st.write('Probability is:'+ " 󠀠 󠀠 󠀠 "+ str(probs_anti_or_non_list[i]))
+                                                        st.code('Active against')
+                                                        if pos_ro_nec[i] == 'gram+,gram-':
+                                                            st.write("✔️ 󠀠gram+"+ " 󠀠 󠀠 󠀠 󠀠 󠀠 󠀠"+'Probability is:'+ " 󠀠 󠀠 󠀠 "+str(probs_poe_list[i]))
+                                                            st.write("✔️ 󠀠gram-"+ " 󠀠 󠀠 󠀠 󠀠 󠀠 󠀠 󠀠"+'Probability is:'+ " 󠀠 󠀠 󠀠 "+str(probs_nec_list[i]))
+                                                        elif pos_ro_nec[i] == 'gram+':
+                                                            st.write("✔️ 󠀠gram+"+ " 󠀠 󠀠 󠀠 󠀠 󠀠 󠀠"+'Probability is:'+ " 󠀠 󠀠 󠀠 "+str(probs_poe_list[i]))
+                                                        elif pos_ro_nec[i] == 'gram-':
+                                                            st.write("✔️ 󠀠gram-"+ " 󠀠 󠀠 󠀠 󠀠 󠀠 󠀠 󠀠"+'Probability is:'+ " 󠀠 󠀠 󠀠 "+str(probs_nec_list[i]))
+                                                    elif anti_or_non[i] == 'non antimicrobial':
+                                                        st.code('❌ 󠀠'+ anti_or_non[i])
+                                                        st.write('Probability is:'+ " 󠀠 󠀠 󠀠 "+ str(probs_anti_or_non_list[i]))
+                                                    # if anti_or_non[i] == "antimicrobial":
+                                                    #     st.subheader('✔️ Your peptide is an antimicrobial peptide.')
+                                                    #     st.text('Probability is '+ str((probs_anti_or_non_list)[i]))
+                                                    #     if (pos_ro_nec[i] == "gram+,gram-"):
+                                                    #         st.success(' 󠀠 󠀠✔️ 󠀠 Resist gram-positive ✚ bacteria.')
+                                                    #         st.text('Probability is '+ str((probs_poe_list)[i]))
+                                                    #         st.success(' 󠀠 󠀠✔️ 󠀠 Resist gram-negative ▬ bacteria.')
+                                                    #         st.text('Probability is '+ str((probs_nec_list)[i]))
                                                         
-                                                        elif (pos_ro_nec[i] == "gram+"):
-                                                            st.success(' 󠀠 󠀠✔️ 󠀠 Resist gram-positive ✚ bacteria.')
-                                                            st.text('Probability is '+ str((probs_poe_list)[i]))
+                                                    #     elif (pos_ro_nec[i] == "gram+"):
+                                                    #         st.success(' 󠀠 󠀠✔️ 󠀠 Resist gram-positive ✚ bacteria.')
+                                                    #         st.text('Probability is '+ str((probs_poe_list)[i]))
                                                         
-                                                        elif (pos_ro_nec[i] == "gram-"):
-                                                            st.success(' 󠀠 󠀠✔️ 󠀠 Resist gram-negative ▬ bacteria.' )
-                                                            st.text('Probability is '+ str((probs_nec_list)[i]))
+                                                    #     elif (pos_ro_nec[i] == "gram-"):
+                                                    #         st.success(' 󠀠 󠀠✔️ 󠀠 Resist gram-negative ▬ bacteria.' )
+                                                    #         st.text('Probability is '+ str((probs_nec_list)[i]))
                                                         
-                                                        else:
-                                                            st.success(' 󠀠 󠀠✔️ 󠀠 Resist other gram of bacteria.')
+                                                    #     else:
+                                                    #         st.success(' 󠀠 󠀠✔️ 󠀠 Resist other gram of bacteria.')
 
-                                                    elif anti_or_non[i] == "non antimicrobial":                                                
-                                                        st.subheader('❌ Your peptide is non antimicrobial peptide.')
-                                                        st.text('Probability is '+ str((probs_anti_or_non_list)[i]))
+                                                    # elif anti_or_non[i] == "non antimicrobial":                                                
+                                                    #     st.subheader('❌ Your peptide is non antimicrobial peptide.')
+                                                    #     st.text('Probability is '+ str((probs_anti_or_non_list)[i]))
                                                     # anti_or_non, pos_ro_nec, probs_anti_or_non_list, probs_nec_list, probs_poe_list = use_model(df_ant_non_normed.iloc[[i]], df_pos_nec_normed.iloc[[i]])
                                                 # feature of peptide --------------------------------------------------------------------------------
                                                 with cooll3:
@@ -776,7 +817,7 @@ class PredictApp(HydraHeadApp):
                                                         <div id="head" style="background-color:{};padding:1px;border-radius:'15px';">
                                                         </div>
                                                         """
-                                    Ideal_dataf = '<div align="center"><p style="font-sans-serif:; color: white; font-size: 40px; background-color: #1F3D7C; border-radius: 5px; text-align:center;">Dataframe of predict your peptide</p>'
+                                    Ideal_dataf = '<div align="center"><p style="font-sans-serif:; color: white; font-size: 40px; background-color: #1F3D7C; border-radius: 5px; text-align:center;">Out put</p>'
                                     st.markdown(Ideal_dataf, unsafe_allow_html=True)
                                     # st.markdown(html_temp.format('white','1px', '50%','#1F3D7C','#FFFFFF'),unsafe_allow_html=True)
                                     st.dataframe(final_data.style.set_properties(**{'background-color': '#C2DFFF',
