@@ -18,7 +18,7 @@ class HowtoApp(HydraHeadApp):
             st.write('##')
             st.write('##')  
             st.write('##') 
-            st.image('resources/w1.jpg', width = 750)
+            st.image('resources/001.jpg', width = 750)
             st.write('##')
             st.write('##')
             st.write('##') 
@@ -50,7 +50,7 @@ class HowtoApp(HydraHeadApp):
 
         with ss4:
             st.write('##') 
-            st.image('resources/w2.jpg', width = 750)
+            st.image('resources/002.jpg', width = 750)
             st.write('##')
             st.write('##')
             st.write('##') 
