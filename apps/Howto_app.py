@@ -4,7 +4,7 @@ from hydralit import HydraHeadApp
 # -------------------------------------------------------------------------------------------------------------------------------------
 class HowtoApp(HydraHeadApp):
 
-    def __init__(self, title = 'How to use web application', **kwargs):
+    def __init__(self, title = 'How to use', **kwargs):
         self.__dict__.update(kwargs)
         self.title = title
 
