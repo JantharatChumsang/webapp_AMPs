@@ -7,12 +7,12 @@ import streamlit.components.v1 as stc
 class DashbApp(HydraHeadApp):
 
     def __init__(self, title = 'Dashboard', delay=0, **kwargs):
-        self.__dict__.update(kwargs)
+        # self.__dict__.update(kwargs)
         self.title = title
-        self.delay = delay
+        # self.delay = delay
 
     def run(self):
-        st.title("Dashboard about data peptide")
+        st.title("Dashboard for data set")
                 #### import html ####
         
         def st_webpage(page_html,width=2000,height=2000):
