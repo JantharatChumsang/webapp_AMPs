@@ -351,3 +351,11 @@ div.streamlit-expanderHeader.st-ae.st-el.st-ag.st-ah.st-ai.st-aj.st-c2.st-em.st-
   border-radius: 5px;
   box-shadow: rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px;
 }
+div.streamlit-expanderHeader.st-ae.st-es.st-ag.st-ah.st-ai.st-aj.st-c9.st-et.st-ca.st-eu.st-ev.st-cq.st-cr.st-ar.st-as.st-b6.st-b5.st-b3.st-d8.st-cj.st-ew.st-b4.st-ex.st-ch.st-ci.st-cg.st-cf {
+  background-color: #C2DFFF;
+  border: 2px solid #D1F0FF;
+  color: rgb(0, 0, 0);
+  padding: 0.5% 0.5% 0.5% 0.5%;
+  border-radius: 5px;
+  box-shadow: rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px;
+}
